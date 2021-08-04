@@ -30,6 +30,7 @@ export default () => {
 
     const handleMessageButtonClick = () => {
         navigation.reset({
+            
             routes: [{name: 'SignIn'}]
         });
     }
