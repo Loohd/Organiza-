@@ -9,6 +9,8 @@ import Preload from '../screens/Preload';
 import SignIn from '../screens/SignIn';
 import SignUp from '../screens/SignUp';
 import Home from '../screens/Home';
+import NoteList from '../screens/NoteList';
+import List from '../screens/List';
 
 const Stack = createStackNavigator();
 
@@ -45,6 +47,36 @@ export default () => (
             )
         }}
         />
+        <Stack.Screen 
+        name="NoteList"
+        component={NoteList}
+        options={{
+            headerShown: true,
+            headerStyle: {
+                backgroundColor: '#333333',
+                height: 56,
+                elevation: null
+            },
+            
+            title: 'LISTA DE ANOTAÇÕES',
+            headerTintColor: '#ffd851',
 
+        }}
+        />
+        <Stack.Screen 
+        name="List"
+        component={List}
+        options={{
+            headerShown: true,
+            headerStyle: {
+                backgroundColor: '#333333',
+                height: 56,
+                elevation: null
+            },
+            
+            title: 'ANOTAÇÃO',
+            headerTintColor: '#ffd851', 
+         }}
+        />
     </Stack.Navigator>
 );

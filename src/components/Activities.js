@@ -1,4 +1,4 @@
-import React from 'react';
+    import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
@@ -28,18 +28,19 @@ const styles = StyleSheet.create({
     container:{
         marginTop: 20,
         backgroundColor: '#FFF',
-        height: 250,
-        width: 200,
+        height: 220,
+        width: 155,
         elevation: 2,
         borderRadius: 10,
         padding: 15,
         marginRight: 30,
         marginLeft: 2,
         marginBottom: 5,
+        alignItems: 'center',
     },
 
     cover:{
-        width: 170,
+        width: 150,
         height: 110,
         borderRadius: 10,
     },

@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, StyleSheet, Text} from 'react-native';
+import { StyleSheet } from 'react-native'; 
 
-export const styles = StyleSheet.create({
+export const styles = StyleSheet.create ({
     header: {
         paddingHorizontal: 15,
         flexDirection: 'row',
@@ -21,42 +21,36 @@ export const styles = StyleSheet.create({
         height: 37,
         borderRadius: 10,
     },
-    
     input: {
         paddingHorizontal: 10,
         fontSize: 13,
         width: '90%',
     },
-
-    activitiesList:{
-        flexDirection: 'row',
-        width: '100%',
-        alignItems: 'center',
-    },
-
-    title: {
-        paddingHorizontal: 15,
-        fontSize: 18,
-        color: '#ffd851',
-    },
-
     bottonNewNote: {
         marginTop: 10,
         width: '100%',
-        alignItems: 'flex-start', 
+        alignItems: 'flex-end',
+        paddingBottom: 10, 
+        
     },
-
     newNote: {
         paddingHorizontal: 15,
         fontSize: 18,
         color: '#ffd851',
     },
-
     plusCircle: {
         paddingHorizontal: 15,
         color: '#ffd851',
         fontSize: 18,
     },
+    container: {
+        flex: 1,
+        
+    },
+    listContainer: {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+       paddingHorizontal: 15,
+    },
 
-    
-});
+})
