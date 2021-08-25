@@ -34,7 +34,8 @@ export default function NoteList() {
                 </Icon>
             </TouchableOpacity>
         </View>
-          <ScrollView style={styles.listContainer}> 
+        <View style={styles.container}> 
+          <View style={styles.listContainer}> 
                       <Activities
                           cover={require('../../assets/FotoTemporaria3.png')}
                           name="Metas 2021"
@@ -49,7 +50,29 @@ export default function NoteList() {
                           onPress={() => {}}
 
                       />
-            </ScrollView>
+                      <Activities
+                          cover={require('../../assets/FotoTemporaria3.png')}
+                          name="Metas 2021"
+                          description="Planejamento de metas a serem alcançadas no ano de 2021"
+                          onPress={() => {}}
+
+                      />
+                      <Activities
+                          cover={require('../../assets/FotoTemporaria3.png')}
+                          name="Metas 2021"
+                          description="Planejamento de metas a serem alcançadas no ano de 2021"
+                          onPress={() => {}}
+
+                      />
+                      <Activities
+                          cover={require('../../assets/FotoTemporaria3.png')}
+                          name="Metas 2021"
+                          description="Planejamento de metas a serem alcançadas no ano de 2021"
+                          onPress={() => {}}
+
+                      />
+            </View>
+            </View>
           </ScrollView>
   );
 }

@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
         margin: 5,
         backgroundColor: '#000',
         padding: 10,
+        flex: 1,
     },  
     title:{
         fontSize: 20,

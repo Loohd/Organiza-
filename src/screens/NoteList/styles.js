@@ -44,13 +44,14 @@ export const styles = StyleSheet.create ({
         fontSize: 18,
     },
     container: {
-        flex: 1,
+        flex: 1,  
+ 
         
     },
-    listContainer: {
+    listContainer: {       
         flexDirection: 'row',
         flexWrap: 'wrap',
-       paddingHorizontal: 15,
+        paddingHorizontal: 15,
     },
 
 })

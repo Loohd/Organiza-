@@ -46,7 +46,6 @@ const styles = StyleSheet.create({
     },
 
     content: {
-        flexDirection: 'row',
         alignItems: 'center',
         marginVertical: 10,
     },

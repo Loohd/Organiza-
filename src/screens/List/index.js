@@ -10,7 +10,7 @@ export default function List(){
         <ScrollView style={{backgroundColor: '#333333'}}>
             <ScrollView style={styles.bodyList}>
                 <ImageTitle
-                    cover={require('../../assets/FotoTemporaria1.png')}
+                    cover={require('../../assets/FotoTemporaria2.png')}
                     titleAnnotation="Afazeres do dia"
                 />
                 <Text style={styles.textDescription}>
