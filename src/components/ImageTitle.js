@@ -17,13 +17,23 @@ export default function ImageTitle({cover, titleAnnotation}) {
 const styles = StyleSheet.create({
     container: {
         margin: 5,
-        backgroundColor: '#000',
+        backgroundColor: '#FFF',
         padding: 10,
-        flex: 1,
-    },  
+    },
+    
+    cover:{
+        width: '100%',
+        height: 110,
+        borderRadius: 10,
+    },
+
     title:{
         fontSize: 20,
-        color: '#333333',
+        color: '#000',
         margin: 15,
+        textShadowColor: '#FFF', 
+        textShadowOffset: { width: 1.5, height: 1.5 }, 
+        textShadowRadius: 1
+
     },
 })
