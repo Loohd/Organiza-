@@ -24,7 +24,8 @@ export default () => {
 
     const handleSignClick = () => {
         navigation.reset({
-            routes: [{name: 'Home'}]
+            // routes: [{name: 'Home'}]
+            routes: [{name: 'Tabs'}]
         });
     }
 

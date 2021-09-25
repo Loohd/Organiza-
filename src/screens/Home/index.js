@@ -5,7 +5,6 @@ import Icon from 'react-native-vector-icons/Feather';
 import { TouchableOpacity} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import {styles} from './styles';
-import Tabs from '../../components/Tabs';
 
 import Activities from '../../components/Activities';
 
@@ -80,7 +79,6 @@ export default function Home() {
                 </Icon>
             </TouchableOpacity>
         </View>
-        <Tabs/>
         </ScrollView>
         
         
