@@ -62,7 +62,7 @@ const Tabs = () => {
           </View>
         )
       }} />
-      <Tab.Screen name="Calendar" component={Home} options={{
+      <Tab.Screen name="Calendar" component={Calendar} options={{
         tabBarIcon: ({ focused }) => (
           <View style={{ alignItems: 'center', justifyContent: 'center', top: 10 }}>
             <Icon name="calendar" size={24} color='#748c94' />
