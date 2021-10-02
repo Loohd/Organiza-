@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity, } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Feather';
@@ -26,7 +26,10 @@ const CustomTabBarButton = ({ children, onPress }) => (
       height: 70,
       borderRadius: 35,
       backgroundColor: '#e32f45',
+      alignItems: 'center',
+      justifyContent: 'center',
     }}>
+          <Icon name="plus" size={40} color='#FFF' />
 
     </View>
   </TouchableOpacity>
@@ -75,10 +78,7 @@ const Tabs = () => {
         )
       }} />
       <Tab.Screen name="Post" component={Home} options={{
-        tabBarIcon: ({ focused }) => (
-          <Icon name="plus" size={24} color='#748c94' />
-          
-        ),
+        
         tabBarButton: (props) => (
           <CustomTabBarButton {...props} />
         )
