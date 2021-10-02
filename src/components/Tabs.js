@@ -1,11 +1,13 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity, } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Feather';
 
 import Home from '../screens/Home';
 import List from '../screens/List';
 import NoteList from '../screens/NoteList';
+import Calendar from './Calendar';
 
 const Tab = createBottomTabNavigator();
 
@@ -51,37 +53,31 @@ const Tabs = () => {
     >
       <Tab.Screen name="Home" component={Home} options={{
         tabBarIcon: ({ focused }) => (
-          <View styles={{ alignItems: 'center', justifyContent: 'center', top: 10 }}>
+          <View style={{ alignItems: 'center', justifyContent: 'center', top: 10 }}>
             <Icon name="home" size={24} color='#748c94' />
             <Text style={{
               color: '#748c94',
-              FontSize: 12
+              height: 18
             }}>Home</Text>
           </View>
         )
       }} />
       <Tab.Screen name="Calendar" component={Home} options={{
         tabBarIcon: ({ focused }) => (
-          <View styles={{ alignItems: 'center', justifyContent: 'center', top: 10 }}>
+          <View style={{ alignItems: 'center', justifyContent: 'center', top: 10 }}>
             <Icon name="calendar" size={24} color='#748c94' />
             <Text style={{
               color: '#748c94',
-              FontSize: 12
+              height: 18
+
             }}>Calendar</Text>
           </View>
         )
       }} />
       <Tab.Screen name="Post" component={Home} options={{
         tabBarIcon: ({ focused }) => (
-          <Image
-            source={require('../assets/plus.svg')}
-            resizeMode="contain"
-            style={{
-              width: 30,
-              height: 30,
-              tintColor: '#FFF',
-            }}
-          />
+          <Icon name="plus" size={24} color='#748c94' />
+          
         ),
         tabBarButton: (props) => (
           <CustomTabBarButton {...props} />
@@ -90,11 +86,12 @@ const Tabs = () => {
       />
       <Tab.Screen name="List" component={NoteList} options={{
         tabBarIcon: ({ focused }) => (
-          <View styles={{ alignItems: 'center', justifyContent: 'center', top: 10 }}>
+          <View style={{ alignItems: 'center', justifyContent: 'center', top: 10 }}>
             <Icon name="file-text" size={24} color='#748c94' />
             <Text style={{
               color: '#748c94',
-              FontSize: 12
+              height: 18
+
             }}>Anotações</Text>
           </View>
 
@@ -102,11 +99,12 @@ const Tabs = () => {
       }} />
       <Tab.Screen name="User" component={Home} options={{
         tabBarIcon: ({ focused }) => (
-          <View styles={{ alignItems: 'center', justifyContent: 'center', top: 10 }}>
+          <View style={{ alignItems: 'center', justifyContent: 'center', top: 10 }}>
             <Icon name="user" size={24} color='#748c94' />
             <Text style={{
               color: '#748c94',
-              fontSize: 12
+              height: 18
+
             }}>Usuario</Text>
           </View>
         )

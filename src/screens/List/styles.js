@@ -6,19 +6,32 @@ export const styles = StyleSheet.create ({
         backgroundColor: '#FFF',
         borderRadius: 10,
     },
+    container: {
+        flex: 1,
+        justifyContent: "center",
+        marginLeft: 15,
+      },
 
     titleDescription:{
         fontSize: 12,
-        margin: 15,
-        marginBottom: 0,
+        marginLeft: 15,
         color: '#000',
     },
 
+    checkboxContainer: {
+        flexDirection: "row",
+      },
+
+      checkbox: {
+        alignSelf: "center",
+      },
+
     textDescription: {
-        margin: 15,
         marginTop: 2,
-        color: '#000',
         fontSize: 15,
+        marginLeft: 5,
+        alignSelf: 'center',
+        color: 'black'
     },
 
     content: {
