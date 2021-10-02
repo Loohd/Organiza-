@@ -8,7 +8,7 @@ export const styles = StyleSheet.create ({
         alignItems: 'center',
         justifyContent: 'center',
         width: '100%',
-        marginVertical: 20,
+        marginVertical: 15,
     },
     inputArea: {
         paddingHorizontal: 15,
@@ -51,7 +51,8 @@ export const styles = StyleSheet.create ({
     listContainer: {       
         flexDirection: 'row',
         flexWrap: 'wrap',
-        paddingHorizontal: 15,
+        paddingHorizontal: 10,
+        justifyContent: 'space-between',
     },
 
 })

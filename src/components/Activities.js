@@ -26,14 +26,14 @@ export default function Activities(props) {
 
 const styles = StyleSheet.create({
     container:{
-        marginTop: 20,
+        marginTop: 10,
         backgroundColor: '#FFF',
         height: 220,
-        width: 155,
+        width: 160,
         elevation: 2,
         borderRadius: 10,
         padding: 15,
-        marginRight: 30,
+        marginRight: 15,
         marginLeft: 2,
         marginBottom: 5,
         alignItems: 'center',

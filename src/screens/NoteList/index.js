@@ -44,7 +44,7 @@ export default function NoteList() {
 
                       />
                       <Activities
-                          cover={require('../../assets/FotoTemporaria3.png')}
+                          cover={require('../../assets/FotoTemporaria1.png')}
                           name="Metas 2021"
                           description="Planejamento de metas a serem alcançadas no ano de 2021"
                           onPress={() => {}}
@@ -58,7 +58,7 @@ export default function NoteList() {
 
                       />
                       <Activities
-                          cover={require('../../assets/FotoTemporaria3.png')}
+                          cover={require('../../assets/FotoTemporaria2.png')}
                           name="Metas 2021"
                           description="Planejamento de metas a serem alcançadas no ano de 2021"
                           onPress={() => {}}
