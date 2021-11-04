@@ -1,81 +1,165 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { StatusBar } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import {Container, 
-    InputArea, 
-    CustomButton, 
-    CustomButtonText, 
-    SignMessageButton, 
-    SignMessageButtonText, 
-    SignMessageButtonTextBold 
+import { StackActions, NavigationActions } from 'react-navigation';
+
+import {
+    Container,
+    InputArea,
+    CustomButton,
+    CustomButtonText,
+    SignMessageButton,
+    SignMessageButtonText,
+    SignMessageButtonTextBold,
+    SuccessMessage,
+    ErrorMessage,
 } from './styles';
 
+import api from '../../services/api';
+
 import SignInput from '../../components/SignInput';
+
 
 import RoutineApplicationLogo from '../../assets/logo-organizae.svg';
 import PersonIcon from '../../assets/person.svg';
 import EmailIcon from '../../assets/email.svg';
 import LockIcon from '../../assets/lock.svg';
 
-export default () => {
+export default class SignUp extends Component {
 
-    const navigation = useNavigation();
+    static propTypes = {
+        navigation: PropTypes.shape({
+            navigate: PropTypes.func,
+            dispatch: PropTypes.func,
+            goBack: PropTypes.func,
+        }).isRequired,
+    };
 
-    const [nameField, setNameField] = useState('');
-    const [emailField, setEmailField] = useState('');
-    const [passwordField, setPasswordField] = useState('');
+    state = {
+        name: '',
+        email: '',
+        password: '',
+        error: '',
+        success: '',
+    };
 
-    const handleSignClick = () => {
-        
-    }
+    handleUsernameChange = (name) => {
+        this.setState({ name });
+    };
 
-    const handleMessageButtonClick = () => {
-        navigation.reset({
-            
-            routes: [{name: 'SignIn'}]
+    handleEmailChange = (email) => {
+        this.setState({ email });
+    };
+
+    handlePasswordChange = (password) => {
+        this.setState({ password });
+    };
+
+    handleBackToLoginPress = () => {
+        this.props.navigation.goBack();
+    };
+
+    handleSignUpPress = async () => {
+        if (this.state.email.length === 0 || this.state.password.length === 0) {
+            this.setState({ error: 'Preencha todos os campos para continuar!' }, () => false);
+        } else {
+            try {
+                await api.post('/register', {
+                    name: this.state.name,
+                    email: this.state.email,
+                    password: this.state.password,
+                });
+
+                this.setState({ success: 'Conta criada com sucesso! Redirecionando para o login', error: '' });
+
+                setTimeout(this.goToLogin, 2500);
+            } catch (_err) {
+                this.setState({ error: 'Houve um problema com o cadastro, verifique os dados preenchidos!' });
+            }
+        }
+    };
+
+    goToLogin = () => {
+        const resetAction = StackActions.reset({
+            index: 0,
+            actions: [
+                NavigationActions.navigate({ routeName: 'SignIn' }),
+            ],
         });
+        this.props.navigation.dispatch(resetAction);
     }
 
 
-    return (
-        <Container>
-            <RoutineApplicationLogo width="100%" height="260"/>
+    // const navigation = useNavigation();
 
-            <InputArea>
+    // const [nameField, setNameField] = useState('');
+    // const [emailField, setEmailField] = useState('');
+    // const [passwordField, setPasswordField] = useState('');
 
-            <SignInput 
-                    IconSvg={PersonIcon}
-                    placeholder="Digite seu nome"
-                    value={nameField}
-                    onChangeText={t=>setNameField(t)}
-                />
+    // const handleSignClick = () => {
 
-                <SignInput 
-                    IconSvg={EmailIcon}
-                    placeholder="Digite seu e-mail"
-                    value={emailField}
-                    onChangeText={t=>setEmailField(t)}
-                />
+    // }
 
-                <SignInput 
-                    IconSvg={LockIcon}
-                    placeholder="Digite sua senha"
-                    value={passwordField}
-                    onChangeText={t=>setPasswordField(t)}
-                    password={true}
+    // const handleMessageButtonClick = () => {
+    //     navigation.reset({
 
-                />
+    //         routes: [{name: 'SignIn'}]
+    //     });
+    // }
 
+    render() {
+        return (
+            <Container>
 
-                <CustomButton onPress={handleSignClick}>
-                    <CustomButtonText>CADASTRAR</CustomButtonText>
-                </CustomButton>
-            </InputArea>
+                <RoutineApplicationLogo width="100%" height="260" />
 
-            <SignMessageButton onPress = {handleMessageButtonClick}>
-                <SignMessageButtonText>Já possui uma conta?</SignMessageButtonText>
-                <SignMessageButtonTextBold>Faça Login</SignMessageButtonTextBold>
-            </SignMessageButton>
+                {this.state.success.length !== 0 && <SuccessMessage>{this.state.success}</SuccessMessage>}
 
-        </Container>
-    );
+                <InputArea>
+
+                    <SignInput
+                        IconSvg={PersonIcon}
+                        placeholder="Digite seu nome"
+                        value={this.state.name}
+                        onChangeText={this.handleUsernameChange}
+                        autoCapitalize="none"
+                        autoCorrect={false}
+                    />
+
+                    <SignInput
+                        IconSvg={EmailIcon}
+                        placeholder="Digite seu e-mail"
+                        value={this.state.email}
+                        onChangeText={this.handleEmailChange}
+                        autoCapitalize="none"
+                        autoCorrect={false}
+                    />
+
+                    <SignInput
+                        IconSvg={LockIcon}
+                        placeholder="Digite sua senha"
+                        value={this.state.password}
+                        onChangeText={this.handlePasswordChange}
+                        autoCapitalize="none"
+                        autoCorrect={false}
+                        secureTextEntry
+                        password={true}
+
+                    />
+
+                    {this.state.error.length !== 0 && <ErrorMessage>{this.state.error}</ErrorMessage>}
+                    <CustomButton onPress={this.handleSignUpPress}>
+                        <CustomButtonText>CADASTRAR</CustomButtonText>
+                    </CustomButton>
+                </InputArea>
+
+                <SignMessageButton onPress={this.handleBackToLoginPress}>
+                    <SignMessageButtonText>Já possui uma conta?</SignMessageButtonText>
+                    <SignMessageButtonTextBold>Faça Login</SignMessageButtonTextBold>
+                </SignMessageButton>
+
+            </Container>
+        );
+    }
 }

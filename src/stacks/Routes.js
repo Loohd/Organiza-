@@ -17,7 +17,7 @@ const Stack = createStackNavigator();
 
 export default () => (
     <Stack.Navigator
-        initialRouteName="Preload"
+        initialRouteName="SignIn"
         screenOptions={{
             headerShown: false
         }}
@@ -25,7 +25,7 @@ export default () => (
         <Stack.Screen name="Preload" component={Preload} />
         <Stack.Screen name="SignIn" component={SignIn} />
         <Stack.Screen name="SignUp" component={SignUp} />
-        <Stack.Screen name="Tabs" component={Tabs} />
+        <Stack.Screen name="Tabs" component={Tabs}/>
         <Stack.Screen 
         name="Home" 
         component={Home} 
@@ -69,7 +69,6 @@ export default () => (
         name="List"
         component={List}
         options={{
-            headerShown: true,
             headerStyle: {
                 backgroundColor: '#333333',
                 height: 56,

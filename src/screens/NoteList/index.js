@@ -25,14 +25,7 @@ export default function NoteList() {
               </View>
           </View>
           <View>
-        <TouchableOpacity style={styles.bottonNewNote}>
-                <Icon
-                name="plus-circle"
-                style= {styles.plusCircle}
-                >
-                <Text style={styles.newNote}>Nova Anotação</Text>
-                </Icon>
-            </TouchableOpacity>
+       
         </View>
         <View style={styles.container}> 
           <View style={styles.listContainer}> 

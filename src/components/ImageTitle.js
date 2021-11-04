@@ -1,39 +1,52 @@
 import React from 'react';
 import { View, ImageBackground, Text, StyleSheet } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import Icon from 'react-native-vector-icons/Feather';
 
-export default function ImageTitle({cover, titleAnnotation}) {
-    return(
+export default function ImageTitle({ cover }) {
+    return (
         <ImageBackground
-        source={cover}
-        style={styles.container}
+            source={cover}
+            style={styles.container}
         >
-            <Text style={styles.title}>
-                {titleAnnotation}
-            </Text>
+            <View style={styles.containerIcon}>
+                <TouchableOpacity style={styles.iconImage}>
+                    <Icon
+                        name='image'
+                        size={30}
+                        color={'#000'}
+                    />
+                </TouchableOpacity>
+            </View>
         </ImageBackground>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
+        height: 140,
         margin: 5,
         backgroundColor: '#FFF',
         padding: 10,
     },
-    
-    cover:{
+
+    cover: {
         width: '100%',
         height: 110,
         borderRadius: 10,
     },
 
-    title:{
-        fontSize: 20,
-        color: '#000',
-        margin: 15,
-        textShadowColor: '#FFF', 
-        textShadowOffset: { width: 1.5, height: 1.5 }, 
-        textShadowRadius: 1
+    containerIcon: {
+        flex: 1,
+        alignItems: 'flex-start',
+    },
+
+    iconImage: {
+        width: 30,
+        height: 30,
+        backgroundColor: '#3E699077',
+        alignItems: 'center',
+        borderRadius: 5,
 
     },
 })

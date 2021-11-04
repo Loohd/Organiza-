@@ -26,23 +26,6 @@ export const styles = StyleSheet.create ({
         fontSize: 13,
         width: '90%',
     },
-    bottonNewNote: {
-        marginTop: 10,
-        width: '100%',
-        alignItems: 'flex-end',
-        paddingBottom: 10, 
-        
-    },
-    newNote: {
-        paddingHorizontal: 15,
-        fontSize: 18,
-        color: '#ffd851',
-    },
-    plusCircle: {
-        paddingHorizontal: 15,
-        color: '#ffd851',
-        fontSize: 18,
-    },
     container: {
         flex: 1,  
  
@@ -51,7 +34,8 @@ export const styles = StyleSheet.create ({
     listContainer: {       
         flexDirection: 'row',
         flexWrap: 'wrap',
-        paddingHorizontal: 10,
+        paddingHorizontal: 15,
+        paddingRight: 15,
         justifyContent: 'space-between',
     },
 

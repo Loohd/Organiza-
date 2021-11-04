@@ -6,6 +6,7 @@ import Icon from 'react-native-vector-icons/Feather';
 
 import Home from '../screens/Home';
 import List from '../screens/List';
+
 import NoteList from '../screens/NoteList';
 import Calendar from './Calendar';
 
@@ -14,7 +15,7 @@ const Tab = createBottomTabNavigator();
 const CustomTabBarButton = ({ children, onPress }) => (
   <TouchableOpacity
     style={{
-      top: -40,
+      top: -25,
       justifyContent: 'center',
       alignItems: 'center',
       ...styles.shadow
@@ -77,14 +78,13 @@ const Tabs = () => {
           </View>
         )
       }} />
-      <Tab.Screen name="Post" component={Home} options={{
-        
-        tabBarButton: (props) => (
+      <Tab.Screen name="Post" component={List} options={{
+          tabBarButton: (props) => (
           <CustomTabBarButton {...props} />
         )
       }}
       />
-      <Tab.Screen name="List" component={NoteList} options={{
+      <Tab.Screen name="NoteList" component={NoteList} options={{
         tabBarIcon: ({ focused }) => (
           <View style={{ alignItems: 'center', justifyContent: 'center', top: 10 }}>
             <Icon name="file-text" size={24} color='#748c94' />

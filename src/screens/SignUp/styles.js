@@ -29,7 +29,7 @@ export const CustomButtonText = styled.Text`
 export const SignMessageButton = styled.TouchableOpacity`
     flex-direction: row;
     justify-content: center;
-    margin-top: 50px;
+    margin-top: 20px;
     margin-bottom: 20px;
 
 `;
@@ -43,3 +43,18 @@ export const SignMessageButtonTextBold = styled.Text`
     font-weight: bold;
     margin-left: 5px;
 `;
+
+export const SuccessMessage = styled.Text`
+  text-Align: center;
+  color: #08a092;
+  font-Size: 16px;
+  margin-Bottom: 15px;
+`;
+
+export const ErrorMessage = styled.Text`
+    text-align: center;
+    color: #ce2029;
+    font-size: 16px;
+    margin-bottom: 15px;
+`;
+

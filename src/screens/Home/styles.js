@@ -40,23 +40,5 @@ export const styles = StyleSheet.create({
         color: '#ffd851',
     },
 
-    bottonNewNote: {
-        marginTop: 10,
-        width: '100%',
-        alignItems: 'flex-start', 
-    },
-
-    newNote: {
-        paddingHorizontal: 15,
-        fontSize: 18,
-        color: '#ffd851',
-    },
-
-    plusCircle: {
-        paddingHorizontal: 15,
-        color: '#ffd851',
-        fontSize: 18,
-    },
-
     
 });
