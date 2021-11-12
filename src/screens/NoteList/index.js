@@ -29,41 +29,40 @@ export default function NoteList() {
         </View>
         <View style={styles.container}> 
           <View style={styles.listContainer}> 
-                      <Activities
-                          cover={require('../../assets/FotoTemporaria3.png')}
-                          name="Metas 2021"
-                          description="Planejamento de metas a serem alcançadas no ano de 2021"
-                          onPress={() => navigation.navigate('List')}
-
-                      />
-                      <Activities
-                          cover={require('../../assets/FotoTemporaria1.png')}
-                          name="Metas 2021"
-                          description="Planejamento de metas a serem alcançadas no ano de 2021"
-                          onPress={() => {}}
-
-                      />
-                      <Activities
-                          cover={require('../../assets/FotoTemporaria3.png')}
-                          name="Metas 2021"
-                          description="Planejamento de metas a serem alcançadas no ano de 2021"
-                          onPress={() => {}}
-
-                      />
-                      <Activities
-                          cover={require('../../assets/FotoTemporaria2.png')}
-                          name="Metas 2021"
-                          description="Planejamento de metas a serem alcançadas no ano de 2021"
-                          onPress={() => {}}
-
-                      />
-                      <Activities
-                          cover={require('../../assets/FotoTemporaria3.png')}
-                          name="Metas 2021"
-                          description="Planejamento de metas a serem alcançadas no ano de 2021"
-                          onPress={() => {}}
-
-                      />
+          <Activities
+                    cover={require('../../assets/FotoTemporaria3.png')}
+                    name="Tarefa do dia"
+                    date="06/11/2021"
+                    status="Concluído"
+                    onPress={() => navigation.navigate('List')}
+                />
+                <Activities
+                    cover={require('../../assets/FotoTemporaria4.png')}
+                    name="Tarefa do dia"
+                    date="07/11/2021"
+                    status="Pendente"
+                    onPress={() => navigation.navigate('List')}
+                />
+                <Activities
+                    name="Tarefa do dia"
+                    date="08/11/2021"
+                    status="Pendente"
+                    onPress={() => navigation.navigate('List')}
+                />
+                <Activities
+                    cover={require('../../assets/FotoTemporaria1.png')}
+                    name="Tarefa do dia"
+                    date="09/11/2021"
+                    status="Pendente"
+                    onPress={() => navigation.navigate('List')}
+                />
+                <Activities
+                    cover={require('../../assets/FotoTemporaria2.png')}
+                    name="Tarefa do dia"
+                    date="10/11/2021"
+                    status="Pendente"
+                    onPress={() => navigation.navigate('List')}
+                />
             </View>
             </View>
           </ScrollView>

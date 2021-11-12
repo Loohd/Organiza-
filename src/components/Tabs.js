@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useNavigation } from '@react-navigation/native';
@@ -6,9 +6,13 @@ import Icon from 'react-native-vector-icons/Feather';
 
 import Home from '../screens/Home';
 import List from '../screens/List';
-
+import NewTaskModal from './NewTask';
 import NoteList from '../screens/NoteList';
 import Calendar from './Calendar';
+import User from '../screens/User';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import api from '../services/api';
+
 
 const Tab = createBottomTabNavigator();
 
@@ -30,7 +34,7 @@ const CustomTabBarButton = ({ children, onPress }) => (
       alignItems: 'center',
       justifyContent: 'center',
     }}>
-          <Icon name="plus" size={40} color='#FFF' />
+      <Icon name="plus" size={40} color='#FFF' />
 
     </View>
   </TouchableOpacity>
@@ -46,7 +50,7 @@ const Tabs = () => {
           bottom: 15,
           left: 15,
           right: 15,
-          elevation: 0,
+          elevation: 10,
           backgroundColor: '#FFF',
           borderRadius: 15,
           height: 80,
@@ -62,7 +66,7 @@ const Tabs = () => {
             <Text style={{
               color: '#748c94',
               height: 18
-            }}>Home</Text>
+            }}>Início</Text>
           </View>
         )
       }} />
@@ -74,12 +78,12 @@ const Tabs = () => {
               color: '#748c94',
               height: 18
 
-            }}>Calendar</Text>
+            }}>Calendário</Text>
           </View>
         )
       }} />
-      <Tab.Screen name="Post" component={List} options={{
-          tabBarButton: (props) => (
+      <Tab.Screen name="Post" component={NewTaskModal} options={{
+        tabBarButton: (props) => (
           <CustomTabBarButton {...props} />
         )
       }}
@@ -97,7 +101,7 @@ const Tabs = () => {
 
         )
       }} />
-      <Tab.Screen name="User" component={Home} options={{
+      <Tab.Screen name="User" component={User} options={{
         tabBarIcon: ({ focused }) => (
           <View style={{ alignItems: 'center', justifyContent: 'center', top: 10 }}>
             <Icon name="user" size={24} color='#748c94' />
@@ -105,7 +109,7 @@ const Tabs = () => {
               color: '#748c94',
               height: 18
 
-            }}>Usuario</Text>
+            }}>Usuário</Text>
           </View>
         )
       }} />

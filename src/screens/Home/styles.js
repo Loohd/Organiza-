@@ -3,12 +3,12 @@ import { View, StyleSheet, Text} from 'react-native';
 
 export const styles = StyleSheet.create({
     header: {
-        paddingHorizontal: 15,
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         width: '100%',
         marginVertical: 20,
+        maxWidth: '90%'
     },
     inputArea: {
         paddingHorizontal: 15,
@@ -27,7 +27,6 @@ export const styles = StyleSheet.create({
         fontSize: 13,
         width: '90%',
     },
-
     activitiesList:{
         flexDirection: 'row',
         width: '100%',

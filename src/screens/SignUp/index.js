@@ -27,7 +27,10 @@ import EmailIcon from '../../assets/email.svg';
 import LockIcon from '../../assets/lock.svg';
 
 export default class SignUp extends Component {
-
+    
+    static navigationOptions = {
+        header: null,
+      }
     static propTypes = {
         navigation: PropTypes.shape({
             navigate: PropTypes.func,
@@ -71,7 +74,7 @@ export default class SignUp extends Component {
                     password: this.state.password,
                 });
 
-                this.setState({ success: 'Conta criada com sucesso! Redirecionando para o login', error: '' });
+                this.setState({ success: 'Conta criada com sucesso! Você será redirecionado.', error: '' });
 
                 setTimeout(this.goToLogin, 2500);
             } catch (_err) {
@@ -81,13 +84,14 @@ export default class SignUp extends Component {
     };
 
     goToLogin = () => {
-        const resetAction = StackActions.reset({
-            index: 0,
-            actions: [
-                NavigationActions.navigate({ routeName: 'SignIn' }),
-            ],
-        });
-        this.props.navigation.dispatch(resetAction);
+        // const resetAction = StackActions.reset({
+        //     index: 0,
+        //     actions: [
+        //         NavigationActions.navigate({ routeName: 'SignIn' }),
+        //     ],
+        // });
+                this.props.navigation.navigate('Tabs');
+                // this.props.navigation.dispatch(resetAction);
     }
 
 

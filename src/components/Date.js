@@ -9,9 +9,9 @@ export default class Date extends Component{
         date: '',
     }
 
-    changeDate = (valor) => {
+    changeDate = (date) => {
         this.setState({
-            date: valor,
+            date: date,
         })
     }
 
@@ -31,7 +31,7 @@ export default class Date extends Component{
 const styles = StyleSheet.create({
 
     dateComponent: {
-        width: 160,
+        flex: 1,
     }
 
 });

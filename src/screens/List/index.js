@@ -1,144 +1,176 @@
-import React, { useState } from 'react';
-import { KeyboardAvoidingView, StyleSheet, Text, View, TextInput, TouchableOpacity, Keyboard, ScrollView } from 'react-native';
+import React, { Component, useState } from 'react';
+import {
+    KeyboardAvoidingView,
+    StyleSheet,
+    Text,
+    View,
+    TextInput,
+    TouchableOpacity,
+    Keyboard,
+    ScrollView,
+    Modal,
+    Pressable,
+    FlatList
+} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
+
+import { styles } from './styles';
 
 import ImageTitle from '../../components/ImageTitle';
 import Task from '../../components/Task';
 
-export default function App() {
-    const [task, setTask] = useState();
-    const [taskItems, setTaskItems] = useState([]);
+export default class List extends Component {
 
-    const handleAddTask = () => {
-        Keyboard.dismiss();
-        setTaskItems([...taskItems, task])
-        setTask(null);
+    constructor(props) {
+        super(props);
+        this.state = {
+            modalVisible: false,
+            taskItems: [
+                { key: "0", desc: "item1", done: false },
+                { key: "1", desc: "item2", done: false },
+            ],
+        };
+
+        this.insertTask = this.insertTask.bind(this)
+        this.renderItem = this.renderItem.bind(this)
+
     }
 
-    const completeTask = (index) => {
-        let itemsCopy = [...taskItems];
-        itemsCopy.splice(index, 1);
-        setTaskItems(itemsCopy)
-    }
 
-    return (
-        <View style={styles.body}>
-            <View style={styles.container}>
-                {/* Added this scroll view to enable scrolling when list gets longer than the page */}
-                <ScrollView
-                    contentContainerStyle={{
-                        flexGrow: 1
-                    }}
-                    keyboardShouldPersistTaps='handled'
+    renderItem() {
+
+        return (
+
+            <TouchableOpacity style={styles.containerTask}>
+                <View style={styles.TaskContainer}>
+                    {this.state.taskItems.map((taskItems, index) =>
+                        <Task key={index.key} text={taskItems.desc} />
+                    )}
+
+                    {/* <Task text={obj.taskItems.desc} /> */}
+                </View>
+                <TouchableOpacity
+                    onPress={() => this.state.modalVisible(true)}
+                    style={styles.trashIcon}
                 >
-                    <ImageTitle
-                        // cover={require('../../assets/FotoTemporaria3.png')}
+                    <Icon
+                        name='trash-2'
+                        size={25}
+                        color='#FF1B1C'
                     />
+                </TouchableOpacity>
+            </TouchableOpacity>
+        )
 
-                    {/* Today's Tasks */}
-                    <View style={styles.tasksWrapper}>
-                        <View style={styles.sectionTitle}>
-                        <Icon
-                            name="edit-2"
-                            size={30}
-                            color='#2C497F'
+    }
+
+    insertTask() {
+        let newTask = {
+            key: this.state.taskItems.length.toString(),
+            desc: this.state.text,
+            done: false
+        }
+
+        let taskItems = this.state.taskItems;
+        taskItems.push(newTask)
+        this.setState({ taskItems })
+
+        let text = ""
+        this.setState({ text })
+        console.log(this.state);
+    }
+
+    completeTask = (index) => {
+        this.state.taskItems.splice(index, 1);
+        this.setState({taskItems: this.state.taskItems})
+        alert("Tarefa Concluída")
+    }
+
+    deleteTask = (index) => {
+        this.state.taskItems.splice(index, 1);
+        this.setState({taskItems: this.state.taskItems})
+        alert("Tarefa Excluída")
+
+    }
+
+    render() {
+        const { modalVisible } = this.state;
+        return (
+
+            <View style={styles.body}>
+                <View style={styles.container}>
+                    <ScrollView
+                        contentContainerStyle={{
+                            flexGrow: 1
+                        }}
+                        keyboardShouldPersistTaps='handled'
+                    >
+                        <ImageTitle
+                        // cover={require('../../assets/FotoTemporaria3.png')}
                         />
-                        <TextInput style={styles.taskTitle}>Nova Anotação</TextInput>
-                        </View>
-                        <View style={styles.items}>
-                            {/* This is where the tasks will go! */}
-                            {
-                                taskItems.map((item, index) => {
-                                    return (
-                                        <TouchableOpacity key={index} onPress={() => completeTask(index)}>
-                                            <Task text={item} />
-                                        </TouchableOpacity>
-                                    )
-                                })
-                            }
-                        </View>
-                    </View>
 
-                </ScrollView>
+                        <View style={styles.tasksWrapper}>
+                            <View style={styles.sectionTitle}>
+                                <Icon
+                                    name="edit-2"
+                                    size={30}
+                                    color='#2C497F'
+                                />
+                                <TextInput style={styles.taskTitle}></TextInput>
+                            </View>
 
-                {/* Write a task */}
-                {/* Uses a keyboard avoiding view which ensures the keyboard does not cover the items on screen */}
-                <KeyboardAvoidingView
-                    style={styles.writeTaskWrapper}
-                >
-                    <TextInput style={styles.input} placeholder={'Digite uma anotação'} value={task} onChangeText={text => setTask(text)} />
-                    <TouchableOpacity onPress={() => handleAddTask()}>
-                        <View style={styles.addWrapper}>
+
+                            <View style={styles.items}>
+
+                                {
+                                    this.state.taskItems.map((taskItems, index) => {
+                                        return (
+                                            <TouchableOpacity style={styles.containerTask} key={index.key} onPress={()=> this.completeTask(index)}>
+                                                <View style={styles.TaskContainer}>
+                                                    <Task text={taskItems.desc} />
+                                                </View>
+                                                <TouchableOpacity
+                                                    style={styles.trashIcon}
+                                                    onPress={()=>this.deleteTask(index)}
+                                                >
+                                                    <Icon
+                                                        name='trash-2'
+                                                        size={25}
+                                                        color='#FF1B1C'
+                                                    />
+                                                </TouchableOpacity>
+                                            </TouchableOpacity>
+                                        )
+                                    })
+                                }
+                            </View>
+                        </View>
+                    </ScrollView>
+                    <KeyboardAvoidingView
+                        style={styles.writeTaskWrapper}
+                    >
+                        <TouchableOpacity>
                             <Icon
-                                name="plus"
-                                size={40}
-                                color='#FC440F'
+                                name='check-square'
+                                size={30}
+                                color='#0EAD69'
                             />
-                        </View>
-                    </TouchableOpacity>
-                </KeyboardAvoidingView>
-
+                        </TouchableOpacity>
+                        <TextInput style={styles.input} placeholder={'Digite uma anotação'} value={this.state.text} onChangeText={(text) => { this.setState({ text }) }} />
+                        <TouchableOpacity onPress={this.insertTask}>
+                            <View style={styles.addWrapper}>
+                                <Icon
+                                    name="plus"
+                                    size={40}
+                                    color='#FC440F'
+                                />
+                            </View>
+                        </TouchableOpacity>
+                    </KeyboardAvoidingView>
+                </View>
             </View>
-        </View>
-    );
+
+        );
+    }
 }
 
-const styles = StyleSheet.create({
-    body: {
-        backgroundColor: '#333333',
-        flex: 1,
-    },
-    container: {
-        flex: 1,
-        elevation: 2,
-        borderRadius: 10,
-        padding: 15,
-        margin: 15,
-        marginBottom: 120,
-        backgroundColor: '#FFF'
-    },
-    tasksWrapper: {
-        
-        paddingTop: 5,
-        paddingHorizontal: 20,
-    },
-    taskTitle:{
-        fontSize: 24,
-        fontWeight: 'bold'
-    },
-    sectionTitle: {
-        flexDirection: 'row',
-        alignItems: 'center',
-
-    },
-    items: {
-        marginTop: 30,
-    },
-    writeTaskWrapper: {
-        position: 'absolute',
-        bottom: 10,
-        width: '100%',
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        alignItems: 'center'
-    },
-    input: {
-        paddingVertical: 15,
-        paddingHorizontal: 15,
-        backgroundColor: '#FFF',
-        borderRadius: 60,
-        borderColor: '#2C497F',
-        borderWidth: 1,
-        width: 250,
-    },
-    addWrapper: {
-        width: 60,
-        height: 60,
-        backgroundColor: '#FFF',
-        borderRadius: 60,
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderColor: '#2C497F',
-        borderWidth: 1,
-    },
-});

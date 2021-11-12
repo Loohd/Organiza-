@@ -1,33 +1,46 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import React from "react";
 import { StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import styled from "styled-components/native";
 
 export default function Tabs() {
-    return(
+
+    const [token] = useState(AsyncStorage.getItem('token'));
+
+    if (token === '' || token === null) {
+        this.props.navigation.navigate('SignUp');
+    }
+
+    function handleLogout() {
+        AsyncStorage.clear();
+        this.props.navigation.navigate('SignUp');
+    }
+    
+    return (
         <Container>
             <TabsContainer>
                 <TabItem>
-                <Icon name= "home" size={24} color="#FFF"/>
+                    <Icon name="home" size={24} color="#FFF" />
                 </TabItem >
                 <TabItem>
-                <Icon name= "file-text" size={24} color="#FFF"/>
+                    <Icon name="file-text" size={24} color="#FFF" />
                 </TabItem >
                 <TabItem>
-                <Icon name= "plus-circle" size={45} color="#FFF"/>
+                    <Icon name="plus-circle" size={45} color="#FFF" />
                 </TabItem >
                 <TabItem>
-                <Icon name= "calendar" size={24} color="#FFF"/>
+                    <Icon name="calendar" size={24} color="#FFF" />
                 </TabItem >
                 <TabItem>
-                <Icon name= "user" size={24} color="#FFF"/>
+                    <Icon name="user" size={24} color="#FFF" />
                 </TabItem >
             </TabsContainer>
         </Container>
     );
 }
 
-export const Container = styled.View `
+export const Container = styled.View`
     height: 65px;
     margin-top: 20px;
     background: rgba(51, 51, 65, 100);

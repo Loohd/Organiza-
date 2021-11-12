@@ -1,7 +1,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
-import { TouchableOpacity} from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
 
@@ -17,67 +17,39 @@ const Stack = createStackNavigator();
 
 export default () => (
     <Stack.Navigator
-        initialRouteName="SignIn"
+        // initialRouteName="SignIn"
         screenOptions={{
             headerShown: false
         }}
     >
-        <Stack.Screen name="Preload" component={Preload} />
-        <Stack.Screen name="SignIn" component={SignIn} />
-        <Stack.Screen name="SignUp" component={SignUp} />
-        <Stack.Screen name="Tabs" component={Tabs}/>
-        <Stack.Screen 
-        name="Home" 
-        component={Home} 
-        options={{
-            headerShown: true,
-            headerStyle: {
-                backgroundColor: '#333333',
-                height: 56,
-                elevation: null
-            },
-            title: 'INICIO',
-            headerTintColor: '#ffd851',
-
-            headerRight: () => (
-                <TouchableOpacity style={{marginRight: 30}}>
-                    <Icon
-                    name="log-out"
-                    size={30}
-                    color="#ffd851"/>
-                </TouchableOpacity>
-            )
-        }}
+        {/* <Stack.Screen name="Preload"  component={Preload} /> */}
+        <Stack.Screen name="SignIn" SignIn="SignIn" component={SignIn} />
+        <Stack.Screen name="SignUp" SignUp= "SignUp" component={SignUp} />
+        <Stack.Screen name="Tabs" component={Tabs} />
+        <Stack.Screen
+            name="Home"
+            component={Home}
+            options={{
+                title: 'INICIO',
+                headerTintColor: '#ffd851',
+            }}
         />
-        <Stack.Screen 
-        name="NoteList"
-        component={NoteList}
-        options={{
-            headerShown: true,
-            headerStyle: {
-                backgroundColor: '#333333',
-                height: 56,
-                elevation: null
-            },
-            
-            title: 'LISTA DE ANOTAÇÕES',
-            headerTintColor: '#ffd851',
+        <Stack.Screen
+            name="NoteList"
+            component={NoteList}
+            options={{
+                title: 'LISTA DE ANOTAÇÕES',
+                headerTintColor: '#ffd851',
 
-        }}
+            }}
         />
-        <Stack.Screen 
-        name="List"
-        component={List}
-        options={{
-            headerStyle: {
-                backgroundColor: '#333333',
-                height: 56,
-                elevation: null
-            },
-            
-            title: 'ANOTAÇÃO',
-            headerTintColor: '#ffd851', 
-         }}
+        <Stack.Screen
+            name="List"
+            component={List}
+            options={{
+                title: 'ANOTAÇÃO',
+                headerTintColor: '#ffd851',
+            }}
         />
     </Stack.Navigator>
 );

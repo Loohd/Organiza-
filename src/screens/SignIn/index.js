@@ -26,6 +26,10 @@ import LockIcon from '../../assets/lock.svg';
 
 export default class SignIn extends Component {
 
+    static navigationOptions = {
+        header: null,
+    }
+
     static propTypes = {
         navigation: PropTypes.shape({
             navigate: PropTypes.func,
@@ -36,7 +40,7 @@ export default class SignIn extends Component {
     state = {
         email: '',
         password: '',
-        error: ''
+        error: '',
     };
 
     handleEmailChange = (email) => {
@@ -63,48 +67,17 @@ export default class SignIn extends Component {
 
                 await AsyncStorage.setItem('token', response.data.token);
 
-                // const resetAction = StackActions.reset({
-                //     index: 0,
-                //     actions: [
-                //         NavigationActions.navigate({
-                //             routeName: 'Tabs',
-                //             // params: {
-                //             //     token:
-                //             //         response.data.token
-                //             // },
-                //         }
-                //         ),
-                //     ],
-
-                // });
-                // this.props.navigation.dispatch(resetAction);
+               
                 this.props.navigation.navigate('Tabs');
-                // this.setState({error: response.data.token })
-            
-
-                // this.setState({ error: 'logado com sucesso!' });
-
+               
             } catch (_err) {
-                //this.setState({ error: 'Houve um problema com o login, verifique suas credenciais!' });
+             
                 this.setState({ error: _err.message });
 
             }
         }
     };
-    // const navigation = useNavigation();
-
-    // // const handleSignClick = () => {
-    // //     navigation.reset({
-    // //         // routes: [{name: 'Home'}]
-    // //         routes: [{name: 'Tabs'}]
-    // //     });
-    // // }
-
-    // const handleMessageButtonClick = () => {
-    //     navigation.reset({
-    //         routes: [{ name: 'SignUp' }]
-    //     });
-    // }
+   
     render() {
         return (
 
