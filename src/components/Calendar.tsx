@@ -49,7 +49,9 @@ const Calendar: React.FC = () => {
                     alignItems: 'center',
                     }}>
                             <Text>{item.name}</Text>
-                            <Avatar.Text label="B"/>
+                            <Avatar.Image 
+                            source={require('../assets/ImageUser.webp')}
+                            />
                         </View>
                     </Card.Content>
                 </Card>
@@ -61,7 +63,6 @@ const Calendar: React.FC = () => {
                 <Agenda
                     items={items}
                     loadItemsForMonth={loadItems}
-                    selected={'2021-10-02'}
                     renderItem={renderItem}
 
                 />

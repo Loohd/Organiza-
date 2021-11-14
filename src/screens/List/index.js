@@ -1,4 +1,8 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/Feather';
+import api from '../../services/api';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import {
     KeyboardAvoidingView,
     StyleSheet,
@@ -12,7 +16,6 @@ import {
     Pressable,
     FlatList
 } from 'react-native';
-import Icon from 'react-native-vector-icons/Feather';
 
 import { styles } from './styles';
 
@@ -25,44 +28,33 @@ export default class List extends Component {
         super(props);
         this.state = {
             modalVisible: false,
+            idTaskList: this.props.route.params.idTaskList,
             taskItems: [
-                { key: "0", desc: "item1", done: false },
-                { key: "1", desc: "item2", done: false },
+
             ],
+            taskList: [],
         };
 
         this.insertTask = this.insertTask.bind(this)
-        this.renderItem = this.renderItem.bind(this)
+        // this.getTaskList = this.getTaskList.bind(this)
 
-    }
+    };
 
 
-    renderItem() {
+    async componentDidMount() {
+        try {
+            const response = await api.get('/v1/tasklist/' + this.state.idTaskList);
+            this.setState({
+                taskList: response.data.data
+            });
+            // response.data.data.id;
 
-        return (
+            // const response = await api.get('/v1/task/' + this.state.idTaskList);
+        } catch (_err) {
+            this.setState({ error: _err.message });
 
-            <TouchableOpacity style={styles.containerTask}>
-                <View style={styles.TaskContainer}>
-                    {this.state.taskItems.map((taskItems, index) =>
-                        <Task key={index.key} text={taskItems.desc} />
-                    )}
-
-                    {/* <Task text={obj.taskItems.desc} /> */}
-                </View>
-                <TouchableOpacity
-                    onPress={() => this.state.modalVisible(true)}
-                    style={styles.trashIcon}
-                >
-                    <Icon
-                        name='trash-2'
-                        size={25}
-                        color='#FF1B1C'
-                    />
-                </TouchableOpacity>
-            </TouchableOpacity>
-        )
-
-    }
+        }
+    };
 
     insertTask() {
         let newTask = {
@@ -77,24 +69,27 @@ export default class List extends Component {
 
         let text = ""
         this.setState({ text })
-        console.log(this.state);
     }
 
     completeTask = (index) => {
         this.state.taskItems.splice(index, 1);
-        this.setState({taskItems: this.state.taskItems})
+        this.setState({ taskItems: this.state.taskItems })
         alert("Tarefa Concluída")
     }
 
     deleteTask = (index) => {
         this.state.taskItems.splice(index, 1);
-        this.setState({taskItems: this.state.taskItems})
+        this.setState({ taskItems: this.state.taskItems })
         alert("Tarefa Excluída")
 
     }
 
+    messageImageAlert() {
+        alert("A funcionalidade de inserir imagem ainda não está disponível, por favor aguarde por futuras atualizações")
+    }
+
     render() {
-        const { modalVisible } = this.state;
+        console.log(this.state.taskList)
         return (
 
             <View style={styles.body}>
@@ -106,6 +101,7 @@ export default class List extends Component {
                         keyboardShouldPersistTaps='handled'
                     >
                         <ImageTitle
+                            info={this.messageImageAlert}
                         // cover={require('../../assets/FotoTemporaria3.png')}
                         />
 
@@ -116,7 +112,7 @@ export default class List extends Component {
                                     size={30}
                                     color='#2C497F'
                                 />
-                                <TextInput style={styles.taskTitle}></TextInput>
+                                <Text style={styles.taskTitle}>{this.state.taskList.title}</Text>
                             </View>
 
 
@@ -125,13 +121,13 @@ export default class List extends Component {
                                 {
                                     this.state.taskItems.map((taskItems, index) => {
                                         return (
-                                            <TouchableOpacity style={styles.containerTask} key={index.key} onPress={()=> this.completeTask(index)}>
+                                            <TouchableOpacity style={styles.containerTask} key={index.key} onPress={() => this.completeTask(index)}>
                                                 <View style={styles.TaskContainer}>
                                                     <Task text={taskItems.desc} />
                                                 </View>
                                                 <TouchableOpacity
                                                     style={styles.trashIcon}
-                                                    onPress={()=>this.deleteTask(index)}
+                                                    onPress={() => this.deleteTask(index)}
                                                 >
                                                     <Icon
                                                         name='trash-2'

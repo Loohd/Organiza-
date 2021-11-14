@@ -4,17 +4,18 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Button } from 'react-native-vector-icons/Feather';
 
 export default function Activities(props) {
+
     const [modalVisible, setModalVisible] = useState(false);
     return (
         <View style={styles.container}>
             <TouchableOpacity onPress={props.onPress}>
                 <Image
-                    source={props.cover}
+                    source={require('../assets/ImageActivities.png')}
                     style={styles.cover}
                 />
 
                 <View style={styles.content}>
-                    <Text style={styles.text}>{props.name}</Text>
+                    <Text style={styles.textTitle}>{props.name}</Text>
 
                 </View>
                 <View style={styles.content}>
@@ -78,7 +79,7 @@ const styles = StyleSheet.create({
     container: {
         marginTop: 10,
         backgroundColor: '#FFF',
-        height: 250,
+        height: 260,
         width: 160,
         elevation: 2,
         borderRadius: 10,
@@ -99,11 +100,17 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginBottom: 8,
     },
+    textTitle: {
+        fontSize: 18,
+        color: '#000',
+        fontWeight: "bold",
+        marginTop: 5,
 
+    },
     text: {
         fontSize: 12,
         color: '#000',
-        fontWeight: "bold",
+        marginTop: 2,
 
     },
 
@@ -113,7 +120,7 @@ const styles = StyleSheet.create({
     },
     deleteButton: {
         backgroundColor: '#FF1B1C',
-        width: 100,
+        width: 120,
         height: 40,
         justifyContent: 'center',
         padding: 10,

@@ -3,18 +3,26 @@ import { View, ImageBackground, Text, StyleSheet } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/Feather';
 
-export default function ImageTitle({ cover }) {
+export default function ImageTitle({ cover, info }) {
+
     return (
         <ImageBackground
             source={cover}
             style={styles.container}
         >
-            <View style={styles.containerIcon}>
-                <TouchableOpacity style={styles.iconImage}>
+            <View style={styles.containerIcon}
+            >
+                <TouchableOpacity 
+                style={styles.iconImage}
+                onPress={info}
+                >
                     <Icon
                         name='image'
                         size={30}
                         color={'#000'}
+                        
+
+                        
                     />
                 </TouchableOpacity>
             </View>

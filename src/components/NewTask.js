@@ -18,7 +18,6 @@ export default class NewTask extends Component {
     modalVisible: false,
   };
 
-
   setModalVisible = (visible) => {
     this.setState({ modalVisible: visible });
   }
@@ -45,7 +44,7 @@ export default class NewTask extends Component {
 
         // await AsyncStorage.getItem('token', response.data.token);
 
-        this.props.navigation.navigate('List', {idTakList: response.data.data.id});
+        this.props.navigation.navigate('List', {idTaskList: response.data.data.id});
       } catch (_err) {
         this.setState({ error: _err.message });
 

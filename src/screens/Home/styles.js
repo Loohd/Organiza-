@@ -2,6 +2,27 @@ import React from 'react';
 import { View, StyleSheet, Text} from 'react-native';
 
 export const styles = StyleSheet.create({
+    body:{
+        backgroundColor:'#333333',
+        flex: 1,
+    },
+    flatList:{
+        flex: 1,
+    },
+    containerList:{
+        flex: 1,
+    },
+    containerTest:{
+        backgroundColor: '#FFF',
+        height: 10,
+        margin: 10,
+        height: 200,
+        flex: 1,
+    },
+    textTest:{
+        margin: 10,
+        color: '#000',
+    },
     header: {
         flexDirection: 'row',
         alignItems: 'center',

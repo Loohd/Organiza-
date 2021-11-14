@@ -66,19 +66,21 @@ export default class SignIn extends Component {
                 });
 
                 await AsyncStorage.setItem('token', response.data.token);
+                this.setState({ error: '' })
+                // console.log(response.data.token);
 
-               
                 this.props.navigation.navigate('Tabs');
-               
+
             } catch (_err) {
-             
+
                 this.setState({ error: _err.message });
 
             }
         }
     };
-   
+
     render() {
+
         return (
 
             <Container>
