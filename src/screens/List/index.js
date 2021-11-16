@@ -62,6 +62,7 @@ export default class List extends Component {
             desc: this.state.text,
             done: false
         }
+        console.log(newTask);
 
         let taskItems = this.state.taskItems;
         taskItems.push(newTask)
@@ -102,7 +103,7 @@ export default class List extends Component {
                     >
                         <ImageTitle
                             info={this.messageImageAlert}
-                        // cover={require('../../assets/FotoTemporaria3.png')}
+                        cover={require('../../assets/ImageActivities.png')}
                         />
 
                         <View style={styles.tasksWrapper}>

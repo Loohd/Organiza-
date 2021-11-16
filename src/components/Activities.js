@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, Image, StyleSheet, Modal, Pressable } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { Button } from 'react-native-vector-icons/Feather';
 
 export default function Activities(props) {
@@ -8,36 +8,42 @@ export default function Activities(props) {
     const [modalVisible, setModalVisible] = useState(false);
     return (
         <View style={styles.container}>
-            <TouchableOpacity onPress={props.onPress}>
-                <Image
-                    source={require('../assets/ImageActivities.png')}
-                    style={styles.cover}
-                />
+            <View>
+                <TouchableOpacity onPress={props.onPress}>
+                    <Image
+                        source={require('../assets/ImageActivities.png')}
+                        style={styles.cover}
+                    />
 
-                <View style={styles.content}>
-                    <Text style={styles.textTitle}>{props.name}</Text>
+                    <View style={styles.content}>
+                        <Text style={styles.textTitle}>{props.name}</Text>
 
-                </View>
-                <View style={styles.content}>
-                    <Text style={styles.text}>
-                        {props.date}
-                    </Text>
-                </View>
+                    </View>
 
-                <View style={styles.content}>
-                    <Text style={styles.text}>
-                        {props.status}
-                    </Text>
-                </View>
+                    <View style={styles.content}>
+                        <Text style={styles.text}>
+                            {props.date}
+                        </Text>
+                    </View>
 
-            </TouchableOpacity>
+
+                    <View style={styles.content}>
+                        <Text style={styles.text}>
+                            {props.status}
+                        </Text>
+                    </View>
+
+                </TouchableOpacity>
+            </View>
             <View style={styles.deleteButtonContainer}>
-                <Button
-                    style={styles.deleteButton}
-                    onPress={() => setModalVisible(true)}
-                >
-                    Excluir
-                </Button>
+                <View style={styles.deleteButtonContainer}>
+                    <Button
+                        style={styles.deleteButton}
+                        onPress={() => setModalVisible(true)}
+                    >
+                        Excluir
+                    </Button>
+                </View>
             </View>
             <Modal
                 animationType="slide"
@@ -79,7 +85,7 @@ const styles = StyleSheet.create({
     container: {
         marginTop: 10,
         backgroundColor: '#FFF',
-        height: 260,
+        height: 280,
         width: 160,
         elevation: 2,
         borderRadius: 10,
@@ -100,23 +106,33 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginBottom: 8,
     },
+    
     textTitle: {
-        fontSize: 18,
+        fontSize: 13,
         color: '#000',
         fontWeight: "bold",
         marginTop: 5,
+        textAlign: 'center',
 
     },
     text: {
-        fontSize: 12,
+        fontSize: 10,
         color: '#000',
         marginTop: 2,
 
     },
 
     deleteButtonContainer: {
+        flex: 1,
+        position: 'relative',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'flex-end',
+
+    },
+    deleteButtonPositions: {
+        flex: 1,
+        alignItems: 'flex-end',
+        justifyContent: 'flex-end',
     },
     deleteButton: {
         backgroundColor: '#FF1B1C',

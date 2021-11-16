@@ -22,7 +22,7 @@ export default () => (
             headerShown: false
         }}
     >
-        {/* <Stack.Screen name="Preload"  component={Preload} /> */}
+        <Stack.Screen name="Preload"  component={Preload} />
         <Stack.Screen name="SignIn" SignIn="SignIn" component={SignIn} />
         <Stack.Screen name="SignUp" SignUp= "SignUp" component={SignUp} />
         <Stack.Screen name="Tabs" component={Tabs} />

@@ -18,18 +18,30 @@ export default class Preload extends Component {
     };
     
 
-         checkToken = async () => {
-            const token = await AsyncStorage.getItem('token');
-            if (token) {
-                setTimeout(2500);
-                // this.setState({ error: _err.message });
-                this.props.navigation.navigate('Tabs');
-                console.log(token);
+        //  checkToken = async () => {
+        //     const token = await AsyncStorage.getItem('token');
+        //     if (token) {
+        //         setTimeout(2500);
+        //         // this.setState({ error: _err.message });
+        //         this.props.navigation.navigate('Tabs');
+        //         console.log(token);
                 
-            } else {
+        //     } else {
+        //         this.props.navigation.navigate('SignIn');
+        //     }
+        // };
+
+        async componentDidMount() {
+            try {
+                const token = await AsyncStorage.getItem('token');
+                console.log('token');
+                this.props.navigation.navigate('Tabs');
+    
+            } catch (_err) {
                 this.props.navigation.navigate('SignIn');
+                this.setState({ error: _err.message });
             }
-        };
+        }
 render(){
     return (
         <Container onTouchStart={this.checkToken}>

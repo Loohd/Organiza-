@@ -41,7 +41,7 @@ export const styles = StyleSheet.create({
   },
   writeTaskWrapper: {
     position: 'absolute',
-    bottom: 40,
+    bottom: 10,
     paddingLeft: 10,
     width: '100%',
     flexDirection: 'row',
