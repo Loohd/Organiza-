@@ -5,7 +5,7 @@ import { Button } from 'react-native-vector-icons/Feather';
 
 export default function Activities(props) {
 
-    const [modalVisible, setModalVisible] = useState(false);
+    // const [modalVisible, setModalVisible] = useState(false);
     return (
         <View style={styles.container}>
             <View>
@@ -27,11 +27,11 @@ export default function Activities(props) {
                     </View>
 
 
-                    <View style={styles.content}>
+                    {/* <View style={styles.content}>
                         <Text style={styles.text}>
                             {props.status}
                         </Text>
-                    </View>
+                    </View> */}
 
                 </TouchableOpacity>
             </View>
@@ -39,18 +39,17 @@ export default function Activities(props) {
                 <View style={styles.deleteButtonContainer}>
                     <Button
                         style={styles.deleteButton}
-                        onPress={() => setModalVisible(true)}
+                        onPress={props.onPressDelete}
                     >
                         Excluir
                     </Button>
                 </View>
             </View>
-            <Modal
+            {/* <Modal
                 animationType="slide"
                 transparent={true}
                 visible={modalVisible}
                 onRequestClose={() => {
-                    Alert.alert("Modal has been closed.");
                     setModalVisible(!modalVisible);
                 }}
             >
@@ -75,7 +74,7 @@ export default function Activities(props) {
                         </View>
                     </View>
                 </View>
-            </Modal>
+            </Modal> */}
         </View>
 
     );
@@ -85,7 +84,7 @@ const styles = StyleSheet.create({
     container: {
         marginTop: 10,
         backgroundColor: '#FFF',
-        height: 280,
+        height: 260,
         width: 160,
         elevation: 2,
         borderRadius: 10,

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet } from 'react-native'; 
+import { StyleSheet } from 'react-native';
 
 
 export const styles = StyleSheet.create({
@@ -16,12 +16,14 @@ export const styles = StyleSheet.create({
     padding: 15,
     margin: 15,
     marginBottom: 0,
+    marginTop: 0,
     backgroundColor: '#FFF'
   },
-  containerTask:{
-    flexDirection:'row',
+  containerTask: {
+    flexDirection: 'row',
     alignItems: 'center',
     position: 'relative',
+    justifyContent: 'space-between',
   },
   tasksWrapper: {
     paddingTop: 5,
@@ -29,7 +31,9 @@ export const styles = StyleSheet.create({
   },
   taskTitle: {
     fontSize: 24,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    flex: 1,
+    margin: 10,
   },
   sectionTitle: {
     flexDirection: 'row',
@@ -39,13 +43,17 @@ export const styles = StyleSheet.create({
   items: {
     marginTop: 30,
   },
+  containerTaskItems:{
+    flex: 1,
+    marginBottom: 50,
+  },
   writeTaskWrapper: {
     position: 'absolute',
     bottom: 10,
     paddingLeft: 10,
     width: '100%',
     flexDirection: 'row',
-    // justifyContent: '',
+    justifyContent: 'center',
     alignItems: 'center',
     paddingRight: 0,
     justifyContent: 'space-between',
@@ -71,15 +79,14 @@ export const styles = StyleSheet.create({
   },
   centeredView: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    // justifyContent: "center",
   },
   modalView: {
-    margin: 40,
+    flex: 1,
+    margin: 10,
     backgroundColor: "white",
     borderRadius: 20,
-    padding: 35,
-    alignItems: "center",
+    padding: 15,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -106,25 +113,24 @@ export const styles = StyleSheet.create({
     fontSize: 15,
 
   },
+  textAnotationSucessfull: {
+    color: "black",
+    fontSize: 15,
+    marginBottom: 5,
+    paddingLeft: 10,
+    paddingRight: 10,
+  },
   modalText: {
-    marginBottom: 15,
+    marginBottom: 30,
     textAlign: "center",
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: "bold",
 
   },
   modalContainerButton: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
+    position: 'absolute',
+    bottom: 10,
+    alignItems: 'center',
+    paddingRight: 0,
   },
-  trashIcon:{
-  width: 70,
-  alignItems: 'center',
-  },
-  TaskContainer:{
-    justifyContent: 'flex-start',
-    flex: 1,
-    maxWidth: '90%',
-    backgroundColor: '#FFF'
-  },
-})
+});

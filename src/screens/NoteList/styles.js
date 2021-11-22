@@ -10,6 +10,16 @@ export const styles = StyleSheet.create ({
         width: '100%',
         marginVertical: 15,
     },
+    activitiesList:{
+        flexDirection: 'row',
+        width: '100%',
+        alignItems: 'center',
+    },
+    title: {
+        paddingHorizontal: 15,
+        fontSize: 18,
+        color: '#ffd851',
+    },
     inputArea: {
         paddingHorizontal: 15,
         flexDirection: 'row',

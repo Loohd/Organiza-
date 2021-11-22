@@ -9,7 +9,7 @@ import { ErrorMessage } from "../screens/SignIn/styles";
 import DatePicker from "react-native-datepicker";
 
 export default class NewTask extends Component {
-  
+
   state = {
     title: '',
     date: '',
@@ -31,7 +31,7 @@ export default class NewTask extends Component {
 
   handleSavePress = async () => {
     if (this.state.title.length === 0 || this.state.date.length === 0) {
-      this.setState({ error: 'Preencha os campos!' }, () => false);
+      this.setState({ error: 'Verifique se todos os campos foram preenchidos!' }, () => false);
 
     } else {
       try {
@@ -40,35 +40,22 @@ export default class NewTask extends Component {
           date: this.state.date,
           status: this.state.status,
         });
-      console.log(response.data.data.id);
+        console.log(response.data.data.id);
 
         // await AsyncStorage.getItem('token', response.data.token);
-
-        this.props.navigation.navigate('List', {idTaskList: response.data.data.id});
+        this.setState({
+          error: '',
+          date: '',
+          title: '',
+        })
+        this.props.navigation.navigate('List', { idTaskList: response.data.data.id });
       } catch (_err) {
         this.setState({ error: _err.message });
 
       }
     }
   }
-  // async function onInsertTask(data) {
-  //   await setListId('')
-  //   await api.post("/v1/tasks", data, {
-  //     headers: {
-  //       Authorization: `Bearer ${token}`,
-  //     }
-  //   }).then(response => {
-  //     console.log(response)
-  //     if (response.data.status && response.data.status === (401 || 498)) {
-  //       AsyncStorage.clear();
-  //       history.push('/');
-  //     }
-  //     setListId(response.data.data.list_id)
-  //   }).catch(err => {
-  //     alert(err)
-  //   })
 
-  // }
   render() {
     const { modalVisible } = this.state;
     return (
@@ -111,19 +98,18 @@ export default class NewTask extends Component {
             >
               <Text style={styles.textStyle}>Salvar</Text>
             </Pressable>
-            <Pressable
+            {/* <Pressable
               style={[styles.button, styles.buttonClose]}
               onPress={() => this.setModalVisible(true)}
             >
               <Text style={styles.textStyle}>Cancelar</Text>
-            </Pressable>
+            </Pressable> */}
           </View>
-          <Modal
+          {/* <Modal
             animationType="slide"
             transparent={true}
             visible={modalVisible}
             onRequestClose={() => {
-              Alert.alert("Modal has been closed.");
               this.setModalVisible(!modalVisible);
             }}
           >
@@ -148,7 +134,7 @@ export default class NewTask extends Component {
                 </View>
               </View>
             </View>
-          </Modal>
+          </Modal> */}
         </View>
       </ScrollView>
     );
@@ -163,15 +149,15 @@ const styles = StyleSheet.create({
   },
   dateComponent: {
     flex: 1,
-},
+  },
   contanier: {
     flex: 1,
     elevation: 2,
     borderRadius: 10,
     padding: 10,
     margin: 40,
-    marginBottom: 300,
-    marginTop: 100,
+    // marginBottom: 300,
+    // marginTop: 100,
     backgroundColor: '#FFF'
   },
   titleInputContainer: {
@@ -204,12 +190,12 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     alignItems: 'flex-end',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     margin: 10,
     marginBottom: 20,
   },
   button: {
-    width: 130,
+    width: 200,
     height: 50,
     justifyContent: 'center',
     borderRadius: 10,

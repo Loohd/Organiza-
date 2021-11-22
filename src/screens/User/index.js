@@ -13,7 +13,7 @@ export default class User extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: [],
+            taskLists: [],
         };
     };
 
@@ -21,20 +21,26 @@ export default class User extends Component {
         alert("A funcionalidade de inserir imagem ainda não está disponível, por favor aguarde por futuras atualizações")
     };
 
-    // async componentDidMount() {
-    //     try {
-    //         const response = await api.get('api/user');
-    //         this.setState({
-    //             user: response.data.data
-    //         });
-    //         // response.data.data.id;
+    async componentDidMount() {
+        const { navigation } = this.props;
 
-    //         // const response = await api.get('/v1/task/' + this.state.idTaskList);
-    //     } catch (_err) {
-    //         this.setState({ error: _err.message });
+        this.focusListener = navigation.addListener('focus', async() => {
+            try {
+                const response = await api.get('/v1/tasklist');
+                // console.log(response.data.data);
+                this.setState({
+                    taskLists: response.data.data
+                });
+    
+            } catch (_err) {
+                this.setState({ error: _err.message });
+            }
+            // call your refresh method here
+            console.log('refresh');
+        });
 
-    //     }
-    // };
+        this.focusListener;
+    }
 
     render() {
         console.log(this.user);

@@ -66,14 +66,18 @@ export default class SignIn extends Component {
                 });
 
                 await AsyncStorage.setItem('token', response.data.token);
-                this.setState({ error: '' })
-                // console.log(response.data.token);
+                this.setState({
+                    error: '',
+                    email: '',
+                    password: '',
+                })
+                console.log(response.data.token);
 
                 this.props.navigation.navigate('Tabs');
 
             } catch (_err) {
 
-                this.setState({ error: _err.message });
+                this.setState({ error: 'Por favor revise os dados preenchidos!' });
 
             }
         }

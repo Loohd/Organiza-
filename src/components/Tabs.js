@@ -70,7 +70,7 @@ const Tabs = () => {
           </View>
         )
       }} />
-      <Tab.Screen name="Calendar" component={Calendar} options={{
+      {/* <Tab.Screen name="Calendar" component={Calendar} options={{
         tabBarIcon: ({ focused }) => (
           <View style={{ alignItems: 'center', justifyContent: 'center', top: 10 }}>
             <Icon name="calendar" size={24} color='#748c94' />
@@ -81,7 +81,7 @@ const Tabs = () => {
             }}>Calendário</Text>
           </View>
         )
-      }} />
+      }} /> */}
       <Tab.Screen name="Post" component={NewTaskModal} options={{
         tabBarButton: (props) => (
           <CustomTabBarButton {...props} />
@@ -101,7 +101,7 @@ const Tabs = () => {
 
         )
       }} />
-      <Tab.Screen name="User" component={User} options={{
+      {/* <Tab.Screen name="User" component={User} options={{
         tabBarIcon: ({ focused }) => (
           <View style={{ alignItems: 'center', justifyContent: 'center', top: 10 }}>
             <Icon name="user" size={24} color='#748c94' />
@@ -112,7 +112,7 @@ const Tabs = () => {
             }}>Usuário</Text>
           </View>
         )
-      }} />
+      }} /> */}
 
     </Tab.Navigator>
   )
